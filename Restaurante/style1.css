@@ -1,0 +1,596 @@
+/* ----- Estilo general ----- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f9f9f9;
+    color: #333;
+    width: 100%;
+
+    /* AÑADIDO: Propiedades para Flexbox */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ----- Encabezado y navegación ----- */
+header {
+    width: 100%;
+    background: #2c3e50;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #f39c12;
+}
+
+/* AÑADIDO: Contenedor principal para que ocupe todo el espacio */
+.main-content {
+    flex: 1;
+}
+
+/* ----- Contenedor principal y general de las páginas ----- */
+.container {
+    width: 80%;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+}
+
+/* ----- Platos (sección en plato.php) ----- */
+.plato {
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+}
+
+.plato img {
+    width: 150px;
+    border-radius: 10px;
+}
+
+.plato h2 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+/* ----- Comentarios ----- */
+.comentario {
+    border-left: 4px solid #f39c12;
+    padding: 10px;
+    margin: 10px 0;
+    background: #fdf2e9;
+    border-radius: 5px;
+}
+
+.comentario strong {
+    color: #2c3e50;
+}
+
+/* ----- Formularios (general) ----- */
+form {
+    margin-top: 15px;
+}
+
+input, textarea, button {
+    display: block;
+    margin: 10px 0;
+    padding: 8px;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background: #2c3e50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #f39c12;
+}
+
+/* ----- Footer ----- */
+footer {
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+    background: #2c3e50;
+    color: white;
+    width: 100%;
+
+    /* ELIMINADO: Propiedades de posicionamiento absoluto */
+    /* position: absolute; */
+    /* bottom: 0%; */
+}
+
+/* ----- Estilo para la carta de platos ----- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+    text-align: center;
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-body h2 {
+    margin: 10px 0;
+    color: #2c3e50;
+}
+
+.precio {
+    font-size: 1.2em;
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.valoracion {
+    margin: 5px 0;
+    color: #f39c12;
+    font-weight: bold;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background: #2c3e50;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #f39c12;
+}
+
+/* ===== Formularios de login y registro ===== */
+.form-container {
+    width: 90%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 6px 12px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .form-container{
+        width: 100%;
+        margin: 5px;
+    }
+}
+
+.form-container h1 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container input {
+    margin: 10px 0;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+.form-container button {
+    padding: 12px;
+    margin-top: 10px;
+    background: #2c3e50;
+    color: white;
+    font-size: 1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.form-container button:hover {
+    background: #f39c12;
+}
+
+.form-container .error {
+    color: #c0392b;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* ===== Inicio (index.php) ===== */
+.imagenes-inicio {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.imagenes-inicio img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.imagenes-inicio img:hover {
+    transform: scale(1.05);
+}
+
+/* ===== Plato individual ===== */
+.card-plato {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.card-plato img {
+    width: 100%;
+    max-width: 400px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+}
+
+.card-plato .card-body {
+    text-align: center;
+    padding: 15px;
+}
+
+.comentario {
+    background: #fdf2e9;
+    border-left: 4px solid #f39c12;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.05);
+}
+
+.comentario strong a {
+    text-decoration: none;
+    color: #2c3e50;
+}
+
+.comentario p {
+    margin: 5px 0;
+}
+
+.comentario small {
+    color: #555;
+}
+
+/* ===== Perfil de usuario ===== */
+.comentario {
+    background: #fdf2e9;
+    border-left: 4px solid #f39c12;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.08);
+}
+
+.comentario strong {
+    color: #2c3e50;
+}
+
+.comentario em {
+    color: #e67e22;
+}
+
+.comentario small {
+    display: block;
+    margin-top: 5px;
+    color: #555;
+    font-size: 0.9em;
+}
+
+/* ===== Animaciones y transiciones ===== */
+.card, .comentario, .card-plato {
+    transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.card:hover, .card-plato:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 8px 15px rgba(0,0,0,0.2);
+}
+
+input#filtro {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+}
+
+/* ===== Selector de tema ===== */
+select#selector-tema {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 0.95em;
+    margin-left: 10px;
+}
+
+/* ===== Transiciones para cambiar tema ===== */
+body.tema-rojo, body.tema-verde, body.tema-azul {
+    transition: background-color 0.4s, color 0.4s;
+}
+
+/* Ejemplo de colores de tema */
+body.tema-rojo {
+    background-color: #ffe6e6;
+    color: #2c3e50;
+}
+body.tema-verde {
+    background-color: #e6ffe6;
+    color: #2c3e50;
+}
+body.tema-azul {
+    background-color: #e6f0ff;
+    color: #2c3e50;
+}
+
+.descuento-mensaje {
+    background-color: #fffae6;
+    border-left: 5px solid #f39c12;
+    padding: 12px 20px;
+    margin: 15px 0;
+    border-radius: 8px;
+    font-size: 1em;
+    color: #333;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+
+#fondo {
+    max-width: 600px;
+}
+/* ===== Estilos generales ===== */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f9f9f9;
+    color: #333;
+}
+
+/* ===== Header ===== */
+header {
+    background: #2c3e50;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #f39c12;
+}
+
+/* ===== Selector de tema ===== */
+label[for="selector-tema"] {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+select#selector-tema {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 0.95em;
+    margin-left: 5px;
+}
+
+/* ===== Contenido principal ===== */
+.form-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 6px 12px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* ===== Imágenes de inicio ===== */
+.imagenes-inicio {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.imagenes-inicio img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.imagenes-inicio img:hover {
+    transform: scale(1.05);
+}
+
+/* ===== Comentario destacado ===== */
+.comentario {
+    background: #fdf2e9;
+    border-left: 4px solid #f39c12;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    text-align: left;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+
+.comentario strong {
+    color: #2c3e50;
+}
+
+.comentario em {
+    color: #e67e22;
+}
+
+.comentario small {
+    display: block;
+    margin-top: 5px;
+    color: #555;
+    font-size: 0.9em;
+}
+
+/* ===== Footer ===== */
+footer {
+    background: #2c3e50;
+    color: white;
+    padding: 40px 20px 20px;
+    margin-top: 40px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-col h3 {
+    margin-bottom: 15px;
+    color: #f39c12;
+}
+
+.footer-col p,
+.footer-col ul,
+.footer-col li {
+    margin: 5px 0;
+    font-size: 0.95em;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-col a:hover {
+    color: #f39c12;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    margin-top: 20px;
+    padding-top: 15px;
+    font-size: 0.9em;
+    color: #ccc;
+}
+
+/* ===== Version móvil (responsive) ===== */
+@media only screen and (max-width: 768px) {
+    nav a {
+        display: block;
+        margin: 8px 0;
+    }
+
+    .form-container {
+        padding: 20px;
+    }
+
+    .imagenes-inicio {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-col {
+        margin-bottom: 20px;
+    }
+}
