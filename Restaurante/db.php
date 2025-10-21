@@ -1,8 +1,8 @@
 <?php
-$servername = "sql205.infinityfree.com";
-$username = "if0_39953506";
-$password = "6E1fL68rhnJDlSX"; // pon aquí la contraseña correcta
-$dbname = "if0_39953506_bar"; // pon aquí el nombre de tu base de datos exacto
+$servername = "PMYSQL192.dns-servicio.com:3306";
+$username = "11129149_platos";
+$password = "RmEmDFA_d5pBQqC."; // pon aquí la contraseña correcta
+$dbname = "11129149_platos"; // pon aquí el nombre de tu base de datos exacto
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
