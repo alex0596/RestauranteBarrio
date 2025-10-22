@@ -49,7 +49,7 @@ $stmt->close();
 <html>
 <head>
     <title><?php echo $plato['nombre']; ?></title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
     <link rel="icon" href="imagenes/favicon.png" type="image/png">
 </head>
 <body class="tema-rojo">

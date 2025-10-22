@@ -22,7 +22,7 @@ $comentario_destacado = $resultado->fetch_assoc();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurante de Barrio</title>
-    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" href="imagenes/favicon.png" type="image/png">
 </head>
 <body class="tema-rojo">
