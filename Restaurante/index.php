@@ -2,6 +2,14 @@
 session_start();
 include "db.php";
 
+// Generar un nonce para el script inline
+$nonce = base64_encode(random_bytes(16));
+
+// Configurar headers de seguridad
+header("X-Frame-Options: DENY"); // Bloquea iframes
+header("X-Content-Type-Options: nosniff");
+header("Content-Security-Policy: default-src 'self' https:; script-src 'self' 'nonce-$nonce';");
+
 // Comentario destacado
 $sql = "SELECT c.comentario, c.valoracion, c.fecha, u.nombre, p.nombre AS plato
         FROM comentarios c
@@ -15,12 +23,9 @@ $comentario_destacado = $resultado->fetch_assoc();
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:;">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta name="referrer" content="no-referrer">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
     <title>Restaurante de Barrio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="imagenes/favicon.png" type="image/png">
@@ -40,7 +45,6 @@ $comentario_destacado = $resultado->fetch_assoc();
         <?php endif; ?>
     </nav>
 
-    <!-- Selector de tema -->
     <label for="selector-tema">Tema:</label>
     <select id="selector-tema">
         <option value="tema-rojo">Rojo</option>
@@ -79,7 +83,6 @@ $comentario_destacado = $resultado->fetch_assoc();
 
 <footer id="footerGeneral">
     <div class="footer-container">
-        <!-- Columna 1: Contacto -->
         <div class="footer-col">
             <h3>📍 Contacto</h3>
             <p>Paseo Marítimo, 45<br>29640 Fuengirola, Málaga<br>España</p>
@@ -87,8 +90,6 @@ $comentario_destacado = $resultado->fetch_assoc();
             <p>✉️ info@saboresdelmar.es</p>
             <p>🌐 www.saboresdelmar.es</p>
         </div>
-
-        <!-- Columna 2: Horarios -->
         <div class="footer-col">
             <h3>🕒 Horarios</h3>
             <ul class="hours-list">
@@ -98,8 +99,6 @@ $comentario_destacado = $resultado->fetch_assoc();
                 <li>Cocina cierra: 22:30</li>
             </ul>
         </div>
-
-        <!-- Columna 3: Legales -->
         <div class="footer-col">
             <h3>⚖️ Información</h3>
             <ul class="footer-links">
@@ -109,20 +108,20 @@ $comentario_destacado = $resultado->fetch_assoc();
             </ul>
         </div>
     </div>
-
-    <!-- Línea inferior -->
     <div class="footer-bottom">
         <p>&copy; 2024 Sabores del Mar. Todos los derechos reservados.</p>
     </div>
 </footer>
 
-<script>
+<script nonce="<?= $nonce ?>">
 document.body.className = "tema-rojo"; // Tema inicial
 
 function cambiarTema(){
     const tema = document.getElementById('selector-tema').value;
     document.body.className = tema;
 }
+
+document.getElementById('selector-tema').addEventListener('change', cambiarTema);
 </script>
 </body>
 </html>

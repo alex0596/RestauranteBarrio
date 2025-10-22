@@ -37,16 +37,13 @@ $result = $conn->query($sql);
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:;">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta name="referrer" content="no-referrer">
     <meta charset="UTF-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nuestra Carta</title>
     <link rel="icon" href="imagenes/favicon.png" type="image/png">
     <link rel="stylesheet" href="style1.css">
 </head>
-<body class="tema-rojo" id="bodyPlastos">
+<body class="tema-rojo" >
 
 <header>
     <h1>🍽️ Nuestra Carta</h1>
@@ -64,7 +61,7 @@ $result = $conn->query($sql);
 
     <!-- Selector de tema -->
     <label for="selector-tema">Tema:</label>
-    <select id="selector-tema" onchange="cambiarTema()">
+    <select id="selector-tema" >
         <option value="tema-rojo">Rojo</option>
         <option value="tema-verde">Verde</option>
         <option value="tema-azul">Azul</option>
@@ -154,11 +151,12 @@ $result = $conn->query($sql);
 
 
 
-<script>
+<script nonce="<?= $nonce ?>">
+document.body.className = "tema-rojo"; // Tema inicial
+
 function cambiarTema(){
     const tema = document.getElementById('selector-tema').value;
     document.body.className = tema;
-}
 
 function filtrarPlatos(){
     const input = document.getElementById('filtro').value.toLowerCase();
@@ -169,6 +167,7 @@ function filtrarPlatos(){
         plato.style.display = nombre.includes(input) ? "block" : "none";
     });
 }
+document.getElementById('selector-tema').addEventListener('change', cambiarTema);
 </script>
 
 </body>
