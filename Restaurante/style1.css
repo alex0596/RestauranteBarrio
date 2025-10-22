@@ -1,235 +1,742 @@
-/* Dark theme styles */
-.dark-theme {
-    background-color: #2c2c2c;
-    color: #f4f4f4;
+/* ==========================================
+   RESET Y ESTILOS BASE
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.dark-theme header {
-    background-color: #1a1a1a;
-    color: #f4f4f4;
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s, color 0.3s, transform 0.15s ease-out;
+    transform: scale(1);
+    transform-origin: center;
 }
 
-.dark-theme nav ul li a {
-    color: #f4f4f4;
+/* ==========================================
+   TEMAS DE COLOR
+   ========================================== */
+body.tema-rojo {
+    background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
+    color: #2c1810;
 }
 
-.dark-theme nav ul li a:hover {
-    background-color: #3a3a3a;
+body.tema-rojo header {
+    background: linear-gradient(135deg, #d32f2f 0%, #c62828 100%);
 }
 
-.dark-theme .container {
-    background-color: #3a3a3a;
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+body.tema-verde {
+    background: linear-gradient(135deg, #f1f8f4 0%, #d4edda 100%);
+    color: #1b4332;
 }
 
-.dark-theme .plato-card {
-    background-color: #444;
-    border-color: #555;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+body.tema-verde header {
+    background: linear-gradient(135deg, #388e3c 0%, #2e7d32 100%);
 }
 
-.dark-theme .plato-card h3 {
-    color: #f4f4f4;
+body.tema-azul {
+    background: linear-gradient(135deg, #f0f4ff 0%, #dae3ff 100%);
+    color: #0d1b2a;
 }
 
-.dark-theme .plato-card p {
-    color: #ccc;
+body.tema-azul header {
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
 }
 
-.dark-theme .plato-card .precio {
+/* ==========================================
+   HEADER
+   ========================================== */
+header {
+    color: white;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s;
+    font-weight: 500;
+}
+
+nav a:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+header label {
+    display: inline-block;
+    margin-right: 0.5rem;
+    font-weight: 500;
+}
+
+#selector-tema {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#selector-tema:hover {
+    background: white;
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* ==========================================
+   CONTENEDORES PRINCIPALES
+   ========================================== */
+.main-content {
+    flex: 1;
+    padding: 2rem 1rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    flex: 1;
+}
+
+.form-container h2,
+.container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: inherit;
+}
+
+.container h3 {
+    margin: 1.5rem 0 1rem;
+    color: inherit;
+}
+
+/* ==========================================
+   GALERÍA DE IMÁGENES (INDEX)
+   ========================================== */
+.imagenes-inicio {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.imagenes-inicio img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.imagenes-inicio img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* ==========================================
+   GRID DE PLATOS (PLATOS.PHP)
+   ========================================== */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    color: #333;
+    text-align: left;
+}
+
+.card-body p {
+    color: #666;
+    margin-bottom: 0.8rem;
+    flex: 1;
+}
+
+.precio {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 0.8rem 0 !important;
+}
+
+body.tema-rojo .precio {
+    color: #d32f2f;
+}
+
+body.tema-verde .precio {
+    color: #388e3c;
+}
+
+body.tema-azul .precio {
+    color: #1976d2;
+}
+
+.valoracion {
+    font-size: 1.1rem;
     color: #f39c12;
+    margin-bottom: 1rem !important;
 }
 
-.dark-theme footer {
-    background-color: #1a1a1a;
-    color: #f4f4f4;
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s;
+    font-weight: 600;
+    margin-top: auto;
 }
 
-/* Estilos para el formulario de comentarios en tema oscuro */
-.dark-theme .comment-form {
-    background-color: #444;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+.btn:hover {
+    background: linear-gradient(135deg, #2980b9 0%, #21618c 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
 }
 
-.dark-theme .comment-form h3 {
-    color: #f4f4f4;
+/* ==========================================
+   TARJETA DE PLATO INDIVIDUAL (PLATO.PHP)
+   ========================================== */
+.card-plato {
+    max-width: 600px;
+    margin: 0 auto 2rem;
 }
 
-.dark-theme .comment-form label {
-    color: #f4f4f4;
+.card-plato img {
+    height: 350px;
 }
 
-.dark-theme .comment-form input[type="text"],
-.dark-theme .comment-form textarea {
-    background-color: #555;
-    border-color: #666;
-    color: #f4f4f4;
+.card-plato .card-body h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
 
-.dark-theme .comment-form button {
-    background-color: #f39c12;
+.card-plato .precio {
+    text-align: center;
+    font-size: 2rem;
 }
 
-.dark-theme .comment-form button:hover {
-    background-color: #e67e22;
+/* ==========================================
+   FILTROS Y BÚSQUEDA (PLATOS.PHP)
+   ========================================== */
+#filtro {
+    padding: 0.8rem 1.2rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    flex: 1;
+    min-width: 200px;
 }
 
-/* Estilos para los comentarios existentes en tema oscuro */
-.dark-theme .comments-section h3 {
-    color: #f4f4f4;
+#filtro:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
-.dark-theme .comment {
-    background-color: #444;
-    border-color: #555;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+select[name="orden"] {
+    padding: 0.8rem 1.2rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    background: white;
+    transition: all 0.3s;
 }
 
-.dark-theme .comment p {
-    color: #ccc;
+select[name="orden"]:hover,
+select[name="orden"]:focus {
+    border-color: #3498db;
+    outline: none;
 }
 
-.dark-theme .comment .author {
-    color: #f39c12;
+/* ==========================================
+   COMENTARIOS
+   ========================================== */
+.comentario {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 5px solid;
+    margin: 1rem 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
 }
 
-.dark-theme .comment .date {
-    color: #bbb;
+body.tema-rojo .comentario {
+    border-left-color: #d32f2f;
 }
 
-/* Dark theme for new .card styles */
-.dark-theme .card {
-    background: #3a3a3a;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
+body.tema-verde .comentario {
+    border-left-color: #388e3c;
 }
 
-.dark-theme .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 6px 16px rgba(0,0,0,0.4);
+body.tema-azul .comentario {
+    border-left-color: #1976d2;
 }
 
-.dark-theme .card-body h2 {
-    color: #f4f4f4;
+.comentario strong {
+    color: #333;
+    font-weight: 600;
+    font-size: 1.1rem;
 }
 
-.dark-theme .precio {
-    color: #90ee90; /* Lighter green for dark theme */
+.comentario strong a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s;
 }
 
-.dark-theme .valoracion {
-    color: #ffcc00; /* Lighter yellow for dark theme */
+.comentario strong a:hover {
+    color: #2980b9;
+    text-decoration: underline;
 }
 
-.dark-theme .btn {
-    background: #f39c12;
-    color: #1a1a1a;
+.comentario p {
+    margin: 0.8rem 0;
+    color: #555;
+    line-height: 1.7;
 }
 
-.dark-theme .btn:hover {
-    background: #e67e22;
+.comentario small {
+    color: #888;
+    font-size: 0.9rem;
 }
 
-/* Dark theme for form-container */
-.dark-theme .form-container {
-    background: #3a3a3a;
-    box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
+/* ==========================================
+   MENSAJE DE DESCUENTO
+   ========================================== */
+.descuento-mensaje {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    border-left: 5px solid #28a745;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 1.5rem 0;
+    color: #155724;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.2);
+    animation: slideIn 0.5s ease-out;
 }
 
-.dark-theme .form-container h1,
-.dark-theme .form-container h2 {
-    color: #f4f4f4;
+.descuento-mensaje strong {
+    font-size: 1.3rem;
+    color: #0e4620;
 }
 
-.dark-theme .form-container input {
-    background: #555;
-    border-color: #666;
-    color: #f4f4f4;
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.dark-theme .form-container button {
-    background: #f39c12;
-    color: #1a1a1a;
+/* ==========================================
+   FORMULARIOS
+   ========================================== */
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 1.5rem auto;
 }
 
-.dark-theme .form-container button:hover {
-    background: #e67e22;
+.form-container label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.3rem;
 }
 
-.dark-theme .form-container .error {
-    color: #e74c3c;
+.form-container input[type="number"],
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="password"],
+.form-container textarea {
+    padding: 0.8rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s;
 }
 
-/* Dark theme for imagenes-inicio */
-.dark-theme .imagenes-inicio img {
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+.form-container input:focus,
+.form-container textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
-/* Dark theme for card-plato */
-.dark-theme .card-plato img {
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+.form-container textarea {
+    min-height: 120px;
+    resize: vertical;
 }
 
-.dark-theme .comentario {
-    background: #3a3a3a;
-    border-left-color: #007bff; /* Changed border color */
-    box-shadow: 0px 2px 8px rgba(0,0,0,0.15);
+.form-container button[type="submit"] {
+    padding: 1rem;
+    background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
 }
 
-.dark-theme .comentario strong {
-    color: #007bff; /* Changed text color */
+.form-container button[type="submit"]:hover {
+    background: linear-gradient(135deg, #218838 0%, #1e7e34 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
 }
 
-.dark-theme .comentario p {
-    color: #ccc;
+/* ==========================================
+   SEPARADOR
+   ========================================== */
+hr {
+    margin: 2.5rem 0;
+    border: none;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #ddd, transparent);
 }
 
-.dark-theme .comentario small {
-    color: #bbb;
+/* ==========================================
+   FOOTER
+   ========================================== */
+#footerGeneral,
+#footerPlatos,
+footer {
+    background: #2c3e50;
+    color: white;
+    padding: 3rem 2rem 1rem;
+    margin-top: auto;
 }
 
-/* Dark theme for footer */
-.dark-theme .footer-col h3 {
-    color: #f39c12;
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
 }
 
-.dark-theme .footer-col p,
-.dark-theme .footer-col ul,
-.dark-theme .footer-col li,
-.dark-theme .footer-col a {
-    color: #ccc;
+.footer-col h3 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 0.5rem;
 }
 
-.dark-theme .footer-col a:hover {
-    color: #f39c12;
+.footer-col p {
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
 }
 
-.dark-theme .footer-bottom {
-    color: #bbb;
-    border-top-color: rgba(255,255,255,0.3);
+.hours-list,
+.footer-links {
+    list-style: none;
 }
 
-/* Dark theme for specific elements */
-.dark-theme input#filtro {
-    background: #555;
-    border-color: #666;
-    color: #f4f4f4;
+.hours-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.dark-theme select#selector-tema {
-    background: #555;
-    border-color: #666;
-    color: #f4f4f4;
+.footer-links li {
+    margin-bottom: 0.5rem;
 }
 
-.dark-theme .descuento-mensaje {
-    background-color: #555;
-    border-left-color: #f39c12;
-    color: #f4f4f4;
-    box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+.footer-links a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s;
 }
 
-/* Ensure general body styles are overridden */
-.dark-theme body {
-    background-color: #2c2c2c;
-    color: #f4f4f4;
+.footer-links a:hover {
+    color: #5dade2;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #bdc3c7;
+    font-size: 0.9rem;
+}
+
+/* Footer simple para plato.php */
+footer p {
+    text-align: center;
+    padding: 1rem;
+}
+
+/* ==========================================
+   ANIMACIONES
+   ========================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.floating-elements {
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+}
+
+/* ==========================================
+   RESPONSIVE - MÓVIL
+   ========================================== */
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.8rem;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    nav a {
+        text-align: center;
+    }
+
+    header label,
+    #selector-tema {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+
+    .container,
+    .form-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    .container h2,
+    .form-container h2 {
+        font-size: 1.4rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .card img {
+        height: 200px;
+    }
+
+    .card-plato img {
+        height: 250px;
+    }
+
+    .imagenes-inicio {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .imagenes-inicio img {
+        height: 200px;
+    }
+
+    .comentario {
+        padding: 1.2rem;
+    }
+
+    .descuento-mensaje {
+        padding: 1.2rem;
+        font-size: 1rem;
+    }
+
+    .precio {
+        font-size: 1.3rem !important;
+    }
+
+    #footerGeneral,
+    #footerPlatos {
+        padding: 2rem 1rem 1rem;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    /* Filtros en móvil */
+    .container > div:first-of-type {
+        flex-direction: column !important;
+    }
+
+    #filtro,
+    select[name="orden"] {
+        width: 100%;
+    }
+}
+
+/* ==========================================
+   RESPONSIVE - TABLET
+   ========================================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .imagenes-inicio {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ==========================================
+   MEJORAS DE ACCESIBILIDAD
+   ========================================== */
+a:focus,
+button:focus,
+select:focus,
+input:focus,
+textarea:focus {
+    outline: 3px solid #3498db;
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ==========================================
+   OPTIMIZACIÓN PARA IMPRESIÓN
+   ========================================== */
+@media print {
+    header,
+    footer,
+    nav,
+    #selector-tema,
+    header label,
+    .btn {
+        display: none;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .container,
+    .form-container {
+        box-shadow: none;
+        max-width: 100%;
+    }
+
+    .card {
+        break-inside: avoid;
+    }
 }

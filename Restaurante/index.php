@@ -16,16 +16,16 @@ $comentario_destacado = $resultado->fetch_assoc();
 <html lang="es">
 <head>
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:;">
-	<meta http-equiv="X-Content-Type-Options" content="nosniff">
-	<meta http-equiv="X-Frame-Options" content="DENY">
-	<meta name="referrer" content="no-referrer">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta name="referrer" content="no-referrer">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurante de Barrio</title>
     <link rel="stylesheet" href="style1.css">
     <link rel="icon" href="imagenes/favicon.png" type="image/png">
 </head>
-<body>
+<body class="tema-rojo">
 <header>
     <h1>🍽️ Restaurante de Barrio</h1>
     <nav>
@@ -42,35 +42,39 @@ $comentario_destacado = $resultado->fetch_assoc();
 
     <!-- Selector de tema -->
     <label for="selector-tema">Tema:</label>
-    <select id="selector-tema" onchange="cambiarTema()">
+    <select id="selector-tema">
         <option value="tema-rojo">Rojo</option>
         <option value="tema-verde">Verde</option>
         <option value="tema-azul">Azul</option>
     </select>
 </header>
 
-<div class="form-container">
+<div class="form-container fade-in">
     <h2>Bienvenido a nuestro restaurante 🍴</h2>
+    
     <div class="imagenes-inicio">
-        <img src="imagenes/restaurante.webp" alt="Restaurante">
-        <img src="imagenes/paella.webp" alt="Paella">
-        <img src="imagenes/pizza.webp" alt="Pizza">
-        <img src="imagenes/tortilla.webp" alt="Tortilla">
+        <img src="imagenes/restaurante.webp" alt="Restaurante" class="fade-in">
+        <img src="imagenes/paella.webp" alt="Paella" class="fade-in">
+        <img src="imagenes/pizza.webp" alt="Pizza" class="fade-in">
+        <img src="imagenes/tortilla.webp" alt="Tortilla" class="fade-in">
     </div>
 
     <hr>
-    <h2>⭐ Comentario Destacado</h2>
-    <?php if($comentario_destacado): ?>
-        <div class="comentario">
-            <p>"<?php echo $comentario_destacado['comentario']; ?>"</p>
-            <p>— <strong><?php echo $comentario_destacado['nombre']; ?></strong>, 
-               sobre <em><?php echo $comentario_destacado['plato']; ?></em></p>
-            <p>Valoración: <?php echo $comentario_destacado['valoracion']; ?>/5 ⭐</p>
-            <small><?php echo $comentario_destacado['fecha']; ?></small>
-        </div>
-    <?php else: ?>
-        <p>No hay comentarios todavía.</p>
-    <?php endif; ?>
+    
+    <div class="floating-elements">
+        <h2>⭐ Comentario Destacado</h2>
+        <?php if($comentario_destacado): ?>
+            <div class="comentario fade-in">
+                <p>"<?php echo htmlspecialchars($comentario_destacado['comentario']); ?>"</p>
+                <p>— <strong><?php echo htmlspecialchars($comentario_destacado['nombre']); ?></strong>, 
+                   sobre <em><?php echo htmlspecialchars($comentario_destacado['plato']); ?></em></p>
+                <p>Valoración: <?php echo htmlspecialchars($comentario_destacado['valoracion']); ?>/5 ⭐</p>
+                <small><?php echo htmlspecialchars($comentario_destacado['fecha']); ?></small>
+            </div>
+        <?php else: ?>
+            <p class="fade-in">No hay comentarios todavía.</p>
+        <?php endif; ?>
+    </div>
 </div>
 
 <footer id="footerGeneral">

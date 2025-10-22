@@ -1,426 +1,415 @@
-/* ----- Estilo general ----- */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Reset y estilos base */
+* {
     margin: 0;
-    line-height: 1.6;
-    background-color: #f8f8f8;
-    color: #333;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* ----- Encabezado y navegación ----- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Temas de color */
+body.tema-rojo {
+    background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
+    color: #2c1810;
+}
+
+body.tema-rojo header {
+    background: linear-gradient(135deg, #d32f2f 0%, #c62828 100%);
+}
+
+body.tema-verde {
+    background: linear-gradient(135deg, #f1f8f4 0%, #d4edda 100%);
+    color: #1b4332;
+}
+
+body.tema-verde header {
+    background: linear-gradient(135deg, #388e3c 0%, #2e7d32 100%);
+}
+
+body.tema-azul {
+    background: linear-gradient(135deg, #f0f4ff 0%, #dae3ff 100%);
+    color: #0d1b2a;
+}
+
+body.tema-azul header {
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+}
+
+/* Header */
 header {
-    background-color: #2c3e50;
-    color: #fff;
-    padding: 1.5em 0;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    color: white;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 header h1 {
-    margin: 0;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
 }
 
 nav {
-    margin-top: 10px;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
 }
 
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: #fff;
+nav a {
+    color: white;
     text-decoration: none;
-    padding: 5px 10px;
-    transition: background-color 0.3s ease;
-}
-
-nav ul li a:hover {
-    background-color: #34495e;
-    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s;
+    font-weight: 500;
 }
 
 nav a:hover {
-    color: #f39c12;
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
 }
 
-/* ----- Contenedor principal ----- */
-.container {
-    max-width: 1100px;
-    margin: auto;
-    overflow: hidden;
-    padding: 20px 30px;
-}
-
-/* ----- Platos ----- */
-.plato {
-    border-bottom: 1px solid #ddd;
-    padding: 15px 0;
-}
-
-.plato img {
-    width: 150px;
-    border-radius: 10px;
-}
-
-.plato h2 {
-    margin-top: 0;
-    color: #2c3e50;
-}
-
-/* ----- Comentarios ----- */
-.comentario {
-    border-left: 5px solid #007bff; /* Changed border color */
-    padding: 15px;
-    margin: 15px 0;
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0px 2px 8px rgba(0,0,0,0.05);
-}
-
-.comentario strong {
-    color: #007bff; /* Changed text color */
-}
-
-/* ----- Formularios ----- */
-form {
-    margin-top: 15px;
-}
-
-input, textarea, button {
-    display: block;
-    margin: 10px 0;
-    padding: 8px;
-    width: 100%;
-    max-width: 400px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button {
-    background: #2c3e50;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #f39c12;
-}
-
-/* ----- Footer ----- */
-footer {
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 40px;
-    background: #2c3e50;
-    color: white;
-    width: 100%;
-    position: relative; /* Changed from absolute to relative */
-    bottom: 0%;
-}
-/* ----- Estilo para la carta de platos ----- */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-}
-
-.card {
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
-    overflow: hidden;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    text-align: center;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 6px 16px rgba(0,0,0,0.12);
-}
-
-.card img {
-    width: 100%;
-    height: 200px; /* Increased height for better visual */
-    object-fit: cover;
-}
-
-.card-body {
-    padding: 15px;
-}
-
-.card-body h2 {
-    margin: 10px 0;
-    color: #2c3e50;
-    font-size: 1.4em;
-}
-
-.precio {
-    font-size: 1.3em;
-    color: #28a745; /* A more vibrant green */
-    font-weight: bold;
-}
-
-.valoracion {
-    margin: 5px 0;
-    color: #ffc107; /* A more vibrant yellow */
-    font-weight: bold;
-}
-
-.btn {
+/* Selector de tema */
+header label {
     display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    background: #007bff; /* A standard blue for buttons */
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: background 0.3s;
+    margin-right: 0.5rem;
+    font-weight: 500;
 }
 
-.btn:hover {
-    background: #0056b3;
-}
-input, textarea {
-    display: block;
-    margin: 10px 0;
-    padding: 12px;
-    width: 100%;
-    max-width: 400px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1em;
-    box-sizing: border-box; /* Ensure padding doesn't increase width */
-}
-
-button {
-    background: #007bff;
-    color: white;
-    border: none;
+#selector-tema {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    font-size: 1rem;
     cursor: pointer;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-size: 1em;
-    transition: background 0.3s;
+    transition: all 0.3s;
 }
 
-button:hover {
-    background: #0056b3;
+#selector-tema:hover {
+    background: white;
+    border-color: rgba(255, 255, 255, 0.6);
 }
 
-/* ===== Formularios de login y registro ===== */
+/* Contenedor principal */
 .form-container {
-    width: 90%;
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 40px;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    flex: 1;
+}
+
+.form-container h2 {
     text-align: center;
-}
-@media only screen and (max-width: 600px) {
-.form-container{
-    width: 100%;
-    margin: 5px;
-    padding: 20px;
-}
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: inherit;
 }
 
-.form-container h1 {
-    margin-bottom: 25px;
-    color: #2c3e50;
-    font-size: 2em;
-}
-
-.form-container form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.form-container input {
-    margin: 0;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 1em;
-}
-
-.form-container button {
-    padding: 12px;
-    margin-top: 10px;
-    background: #007bff;
-    color: white;
-    font-size: 1.1em;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.form-container button:hover {
-    background: #0056b3;
-}
-
-.form-container .error {
-    color: #dc3545;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-/* ===== Inicio (index.php) ===== */
+/* Galería de imágenes */
 .imagenes-inicio {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;
-    margin: 20px 0;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
 }
 
 .imagenes-inicio img {
     width: 100%;
-    height: 120px;
+    height: 250px;
     object-fit: cover;
     border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .imagenes-inicio img:hover {
     transform: scale(1.05);
-}
-/* ===== Plato individual ===== */
-.card-plato {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
-.card-plato img {
-    width: 100%;
-    max-width: 400px;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+/* Separador */
+hr {
+    margin: 2.5rem 0;
+    border: none;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #ddd, transparent);
 }
 
-.card-plato .card-body {
-    text-align: center;
-    padding: 15px;
-}
-
+/* Comentario destacado */
 .comentario {
-    background: #fdf2e9;
-    border-left: 4px solid #f39c12;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 8px;
-    box-shadow: 0px 2px 4px rgba(0,0,0,0.05);
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 2rem;
+    border-radius: 10px;
+    border-left: 5px solid;
+    margin: 1.5rem 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
-.comentario strong a {
-    text-decoration: none;
-    color: #2c3e50;
+body.tema-rojo .comentario {
+    border-left-color: #d32f2f;
+}
+
+body.tema-verde .comentario {
+    border-left-color: #388e3c;
+}
+
+body.tema-azul .comentario {
+    border-left-color: #1976d2;
 }
 
 .comentario p {
-    margin: 5px 0;
+    margin-bottom: 0.8rem;
 }
 
-.comentario small {
-    color: #555;
-}
-
-/* ===== Perfil de usuario ===== */
-.comentario {
-    background: #fdf2e9;
-    border-left: 4px solid #f39c12;
-    padding: 12px;
-    margin: 12px 0;
-    border-radius: 10px;
-    box-shadow: 0px 2px 5px rgba(0,0,0,0.08);
+.comentario p:first-child {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #333;
+    line-height: 1.8;
 }
 
 .comentario strong {
-    color: #2c3e50;
+    color: #333;
+    font-weight: 600;
 }
 
 .comentario em {
-    color: #e67e22;
+    color: #666;
 }
 
 .comentario small {
-    display: block;
-    margin-top: 5px;
-    color: #555;
-    font-size: 0.9em;
-}
-/* ===== Animaciones y transiciones ===== */
-.card, .comentario, .card-plato {
-    transition: transform 0.2s, box-shadow 0.3s;
+    color: #888;
+    font-size: 0.9rem;
 }
 
-.card:hover, .card-plato:hover {
-    transform: scale(1.03);
-    box-shadow: 0px 8px 15px rgba(0,0,0,0.2);
+/* Footer */
+#footerGeneral {
+    background: #2c3e50;
+    color: white;
+    padding: 3rem 2rem 1rem;
+    margin-top: 3rem;
 }
 
-input#filtro {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    font-size: 1em;
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
 }
 
-/* ===== Selector de tema ===== */
-select#selector-tema {
-    padding: 6px 12px;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-    font-size: 0.95em;
-    margin-left: 10px;
+.footer-col h3 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 0.5rem;
 }
 
-/* ===== Transiciones para cambiar tema ===== */
-body.tema-rojo, body.tema-verde, body.tema-azul {
-    transition: background-color 0.4s, color 0.4s;
+.footer-col p {
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
 }
 
-/* Ejemplo de colores de tema */
-body.tema-rojo {
-    background-color: #ffe6e6;
-    color: #2c3e50;
+.hours-list,
+.footer-links {
+    list-style: none;
 }
-body.tema-verde {
-    background-color: #e6ffe6;
-    color: #2c3e50;
+
+.hours-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
-body.tema-azul {
-    background-color: #e6f0ff;
-    color: #2c3e50;
+
+.footer-links li {
+    margin-bottom: 0.5rem;
 }
-.descuento-mensaje {
-    background-color: #fffae6;
-    border-left: 5px solid #f39c12;
-    padding: 12px 20px;
-    margin: 15px 0;
-    border-radius: 8px;
-    font-size: 1em;
-    color: #333;
-    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+
+.footer-links a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s;
 }
-#fondo{
-    max-width: 600px;
+
+.footer-links a:hover {
+    color: #5dade2;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #bdc3c7;
+    font-size: 0.9rem;
+}
+
+/* Responsive - Móvil */
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.8rem;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    nav a {
+        text-align: center;
+    }
+
+    header label,
+    #selector-tema {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+
+    #selector-tema {
+        margin-top: 0.5rem;
+    }
+
+    .form-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    .form-container h2 {
+        font-size: 1.4rem;
+    }
+
+    .imagenes-inicio {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .imagenes-inicio img {
+        height: 200px;
+    }
+
+    .comentario {
+        padding: 1.5rem;
+    }
+
+    .comentario p:first-child {
+        font-size: 1rem;
+    }
+
+    #footerGeneral {
+        padding: 2rem 1rem 1rem;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .footer-col h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Responsive - Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .imagenes-inicio {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Animaciones suaves */
+@media (prefers-reduced-motion: no-preference) {
+    * {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Transición de escala para cambio de tema */
+body {
+    transform: scale(1);
+    transform-origin: center;
+    transition: background-color 0.3s, color 0.3s, transform 0.15s ease-out;
+}
+
+/* Animaciones de fadeIn */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Elementos flotantes con paralaje */
+.floating-elements {
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+}
+
+/* Mejoras de accesibilidad */
+a:focus,
+button:focus,
+select:focus {
+    outline: 3px solid #3498db;
+    outline-offset: 2px;
+}
+
+/* Estados de carga de imágenes */
+img {
+    background: #f0f0f0;
+}
+
+/* Optimización para impresión */
+@media print {
+    header,
+    footer,
+    nav,
+    #selector-tema,
+    header label {
+        display: none;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .form-container {
+        box-shadow: none;
+        max-width: 100%;
+    }
 }
