@@ -153,10 +153,44 @@ $stmt->close();
 
 </div>
 
-<footer>
-    <p>© 2025 Restaurante de Barrio</p>
-</footer>
+<footer id="footerGeneral">
+    <div class="footer-container">
+        <!-- Columna 1: Contacto -->
+        <div class="footer-col">
+            <h3>📍 Contacto</h3>
+            <p>Paseo Marítimo, 45<br>29640 Fuengirola, Málaga<br>España</p>
+            <p>📞 +34 952 123 456</p>
+            <p>✉️ info@saboresdelmar.es</p>
+            <p>🌐 www.saboresdelmar.es</p>
+        </div>
 
+        <!-- Columna 2: Horarios -->
+        <div class="footer-col">
+            <h3>🕒 Horarios</h3>
+            <ul class="hours-list">
+                <li>Lunes - Jueves: 12:00 - 23:00</li>
+                <li>Viernes - Sábado: 12:00 - 00:00</li>
+                <li>Domingo: 12:00 - 23:00</li>
+                <li>Cocina cierra: 22:30</li>
+            </ul>
+        </div>
+
+        <!-- Columna 3: Legales -->
+        <div class="footer-col">
+            <h3>⚖️ Información</h3>
+            <ul class="footer-links">
+                <li><a href="#privacy">Política de Privacidad</a></li>
+                <li><a href="#terms">Términos y Condiciones</a></li>
+                <li><a href="#cookies">Política de Cookies</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Línea inferior -->
+    <div class="footer-bottom">
+        <p>&copy; 2024 Sabores del Mar. Todos los derechos reservados.</p>
+    </div>
+</footer>
 <script>
 function cambiarTema(){
     const tema = document.getElementById('selector-tema').value;
